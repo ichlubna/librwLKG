@@ -1,4 +1,4 @@
-all: header_vs.inc header_fs.inc im2d_gl.inc im3d_gl.inc default_vs_gl.inc simple_fs_gl.inc matfx_gl.inc skin_gl.inc
+all: header_vs.inc header_fs.inc im2d_gl.inc im3d_gl.inc default_vs_gl.inc simple_fs_gl.inc holo_fs_gl.inc holo_vs_gl.inc matfx_gl.inc skin_gl.inc
 
 header_vs.inc: header.vert
 	(echo 'const char *header_vert_src =';\
@@ -29,6 +29,16 @@ simple_fs_gl.inc: simple.frag
 	(echo 'const char *simple_frag_src =';\
 	 sed 's/..*/"&\\n"/' simple.frag;\
 	 echo ';') >simple_fs_gl.inc
+
+holo_vs_gl.inc: holo.vert
+	(echo 'const char *holo_vert_src =';\
+	 sed 's/..*/"&\\n"/' holo.vert;\
+	 echo ';') >holo_vs_gl.inc
+
+holo_fs_gl.inc: holo.frag
+	(echo 'const char *holo_frag_src =';\
+	 sed 's/..*/"&\\n"/' holo.frag;\
+	 echo ';') >holo_fs_gl.inc
 
 matfx_gl.inc: matfx_env.frag matfx_env.vert
 	(echo 'const char *matfx_env_vert_src =';\
